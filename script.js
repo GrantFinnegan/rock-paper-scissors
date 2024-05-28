@@ -14,6 +14,24 @@ function getComputerChoice(){
     }
 }
 
-console.log(getComputerChoice());
-
-
+//Get human choice
+function getHumanChoice(){
+    //Prompt with message "Please enter your move (rock, paper, or scissors)"
+    //convert to lowercase
+    //store answer
+    let playerInput = prompt("Please enter your move (rock, paper, or scissors)").toLowerCase();
+    switch(playerInput){
+        //CASE "rock": return "rock"
+        case "rock":
+            return "rock";
+        //CASE "paper": return "paper"
+        case "paper":
+            return "paper"
+        //CASE "scissors": return "scissors"
+        case "scissors":
+            return "scissors"
+        //ELSE: return undefined
+        default:
+            return undefined;
+    }
+}
