@@ -39,3 +39,52 @@ function getHumanChoice(){
 //Declare and initialize variables to track the scores of the human and the computer
 let humanScore = 0;
 let computerScore = 0;
+
+
+
+//compare humanChoice and computerChoice
+//Log results to console.
+//increment the score of the winner, if there is one
+function playRound(humanChoice, computerChoice){
+    //IF humanChoice is undefined, log message saying so and leave scores unchanged
+    if (!humanChoice) {
+        console.log("The move you entered was not recognized, please try again");
+    }
+    //check for a draw
+    //ELSE IF human and cumputerChoice are the same
+    else if (humanChoice == computerChoice) {
+        //log a tie message and leave scores unchanged
+        console.log(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
+    }
+    //Check if the player won
+    //IF humanChoice == "rock" AND computerChoice == "scissors"
+    //OR
+    //IF humanChoice == "paper" AND computerChoice == "rock"
+    //OF
+    //IF humanChoice == "scissors" AND computerChoise == "paper"
+    else if (
+        humanChoice == "rock" && computerChoice == "scissors"
+        ||
+        humanChoice == "paper" && computerChoice == "rock"
+        ||
+        humanChoice == "scissors" && computerChoice == "paper"
+    ) {
+        //increment humanScore
+        humanScore++;
+        //log winning message
+        console.log(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
+    }
+    //if no draw or win was detected
+    else {
+        computerScore++;
+        console.log(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
+    }
+}
+
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+console.log(`Human Score: ${humanScore}`);
+console.log(`Computer Score: ${computerScore}`);
