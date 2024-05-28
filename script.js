@@ -46,10 +46,12 @@ function playGame() {
     //compare humanChoice and computerChoice
     //Log results to console.
     //increment the score of the winner, if there is one
+    //unrecognizable inputs count as an automatic loss
     function playRound(humanChoice, computerChoice){
-        //IF humanChoice is undefined, log message saying so and leave scores unchanged
+        //IF humanChoice is undefined, log message saying so and count it as a loss
         if (!humanChoice) {
-            console.log("The move you entered was not recognized, please try again");
+            computerScore++;
+            console.log("You lose! The move you entered was not recognized, and is considered a forfeit");
         }
         //check for a draw
         //ELSE IF human and cumputerChoice are the same
