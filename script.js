@@ -14,7 +14,7 @@ function getComputerChoice(){
     }
 }
 
-//Get human choice
+//Prompt for and return human choice
 function getHumanChoice(){
     //Prompt with message "Please enter your move (rock, paper, or scissors)"
     //convert to lowercase
@@ -35,3 +35,7 @@ function getHumanChoice(){
             return undefined;
     }
 }
+
+//Declare and initialize variables to track the scores of the human and the computer
+let humanScore = 0;
+let computerScore = 0;
