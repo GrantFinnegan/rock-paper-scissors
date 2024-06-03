@@ -37,66 +37,49 @@ function getHumanChoice(){
 }
 
 
-function playGame() {
-    //Declare and initialize variables to track the scores of the human and the computer
-    let humanScore = 0;
-    let computerScore = 0;
-
-
-    //compare humanChoice and computerChoice
-    //Log results to console.
-    //increment the score of the winner, if there is one
-    //unrecognizable inputs count as an automatic loss
-    function playRound(humanChoice, computerChoice){
-        //IF humanChoice is undefined, log message saying so and count it as a loss
-        if (!humanChoice) {
-            computerScore++;
-            console.log("You lose! The move you entered was not recognized, and is considered a forfeit");
-        }
-        //check for a draw
-        //ELSE IF human and cumputerChoice are the same
-        else if (humanChoice == computerChoice) {
-            //log a tie message and leave scores unchanged
-            console.log(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
-        }
-        //Check if the player won
-        //IF humanChoice == "rock" AND computerChoice == "scissors"
-        //OR
-        //IF humanChoice == "paper" AND computerChoice == "rock"
-        //OF
-        //IF humanChoice == "scissors" AND computerChoise == "paper"
-        else if (
-            humanChoice == "rock" && computerChoice == "scissors"
-            ||
-            humanChoice == "paper" && computerChoice == "rock"
-            ||
-            humanChoice == "scissors" && computerChoice == "paper"
-        ) {
-            //increment humanScore
-            humanScore++;
-            //log winning message
-            console.log(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
-        }
-        //if no draw or win was detected
-        else {
-            computerScore++;
-            console.log(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
-        }
+//compare humanChoice and computerChoice
+//Log results to console.
+//increment the score of the winner, if there is one
+//unrecognizable inputs count as an automatic loss
+function playRound(humanChoice, computerChoice){
+    //IF humanChoice is undefined, log message saying so
+    if (!humanChoice) {
+        console.log("You lose! The move you entered was not recognized, and is considered a forfeit");
     }
-
-    //FOR 5 rounds
-    for (let round = 1; round <= 5; round++) {
-        //prompt human for choice, generate computer choice, pass both to playRound
-        playRound(getHumanChoice(), getComputerChoice());
-        //if not final round, log round and score to console
-        if (round <5 ) {
-            console.log(`Round:${round} | Human Score:${humanScore} | Computer Score:${computerScore}`);
-        }
+    //check for a draw
+    //ELSE IF human and cumputerChoice are the same
+    else if (humanChoice == computerChoice) {
+        //log a tie message and leave scores unchanged
+        console.log(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
-    //log final results
-    console.log(`After 5 rounds you have won ${humanScore} time(s) and the computer has won ${computerScore} time(s)`);
-
+    //Check if the player won
+    //IF humanChoice == "rock" AND computerChoice == "scissors"
+    //OR
+    //IF humanChoice == "paper" AND computerChoice == "rock"
+    //OF
+    //IF humanChoice == "scissors" AND computerChoise == "paper"
+    else if (
+        humanChoice == "rock" && computerChoice == "scissors"
+        ||
+        humanChoice == "paper" && computerChoice == "rock"
+        ||
+        humanChoice == "scissors" && computerChoice == "paper"
+    ) {
+        //log winning message
+        console.log(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
+    }
+    //if no draw or win was detected
+    else {
+        console.log(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
+    }
 }
 
-//run the game
-playGame();
+
+const rockBtn = document.querySelector("#rockBtn");
+rockBtn.addEventListener("click", () => playRound("rock", getComputerChoice()));
+
+const paperBtn = document.querySelector("#paperBtn");
+paperBtn.addEventListener("click", () => playRound("paper", getComputerChoice()));
+
+const scissorsBtn = document.querySelector("#scissorsBtn");
+scissorsBtn.addEventListener("click", () => playRound("scissors",getComputerChoice()))
