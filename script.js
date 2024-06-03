@@ -103,11 +103,14 @@ function playRound(humanChoice, computerChoice){
     updateScoreDisplay();
 
     //check for winner of game
-    if(humanScore >= 5) {
-        document.querySelector("#winner").textContent = "Winner: Human! Congratulations";
-    }
-    if(computerScore >= 5) {
+    if(humanScore >= 5 || computerScore >=5) {
+        humanScore >=5 ?
+        document.querySelector("#winner").textContent = "Winner: Human! Congratulations" :
         document.querySelector("#winner").textContent = "Winner: Computer! Better luck next time!";
+        
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
     }
 }
 
