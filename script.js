@@ -43,19 +43,36 @@ function logRound(roundSummary){
     resultSection.append(roundSummaryPara);
 }
 
+//variables for tracking game state over multiple rounds
+let gamesPlayed = 0;
+let humanScore = 0;
+let computerScore = 0;
+let draws = 0;
+
+function updateScoreDisplay () {
+    document.querySelector("#games-played").textContent = `Games Played: ${gamesPlayed}`;
+    document.querySelector("#human-score").textContent = `Human Wins: ${humanScore}`;
+    document.querySelector("#computer-score").textContent = `Computer Wins: ${computerScore}`;
+    document.querySelector("#draws").textContent = `Draws: ${draws}`;
+
+}
+
 //compare humanChoice and computerChoice
-//Log results to console.
-//increment the score of the winner, if there is one
+//Log results to game history section
+//increment the number of games, and the score of the winner, or the number of draws
+//update score display section
 //unrecognizable inputs count as an automatic loss
 function playRound(humanChoice, computerChoice){
     //IF humanChoice is undefined, log message saying so
     if (!humanChoice) {
+        computerScore++;
         logRound("You lose! The move you entered was not recognized, and is considered a forfeit");
     }
     //check for a draw
     //ELSE IF human and cumputerChoice are the same
     else if (humanChoice == computerChoice) {
-        //log a tie message and leave scores unchanged
+        //log a tie message and increment draws
+        draws++;
         logRound(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
     //Check if the player won
@@ -71,13 +88,18 @@ function playRound(humanChoice, computerChoice){
         ||
         humanChoice == "scissors" && computerChoice == "paper"
     ) {
-        //log winning message
+        //log winning message, increment human score
+        humanScore++;
         logRound(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
     //if no draw or win was detected
     else {
+        computerScore++;
         logRound(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
+
+    gamesPlayed++;
+    updateScoreDisplay();
 }
 
 
