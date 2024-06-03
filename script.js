@@ -97,9 +97,18 @@ function playRound(humanChoice, computerChoice){
         computerScore++;
         logRound(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
-
+    
+    //update results section
     gamesPlayed++;
     updateScoreDisplay();
+
+    //check for winner of game
+    if(humanScore >= 5) {
+        document.querySelector("#winner").textContent = "Winner: Human! Congratulations";
+    }
+    if(computerScore >= 5) {
+        document.querySelector("#winner").textContent = "Winner: Computer! Better luck next time!";
+    }
 }
 
 
