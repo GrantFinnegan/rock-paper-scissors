@@ -36,6 +36,12 @@ function getHumanChoice(){
     }
 }
 
+const resultSection = document.querySelector("#results-section");
+function logRound(roundSummary){
+    let roundSummaryPara = document.createElement("p");
+    roundSummaryPara.textContent = roundSummary;
+    resultSection.append(roundSummaryPara);
+}
 
 //compare humanChoice and computerChoice
 //Log results to console.
@@ -44,13 +50,13 @@ function getHumanChoice(){
 function playRound(humanChoice, computerChoice){
     //IF humanChoice is undefined, log message saying so
     if (!humanChoice) {
-        console.log("You lose! The move you entered was not recognized, and is considered a forfeit");
+        logRound("You lose! The move you entered was not recognized, and is considered a forfeit");
     }
     //check for a draw
     //ELSE IF human and cumputerChoice are the same
     else if (humanChoice == computerChoice) {
         //log a tie message and leave scores unchanged
-        console.log(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
+        logRound(`It's a draw! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
     //Check if the player won
     //IF humanChoice == "rock" AND computerChoice == "scissors"
@@ -66,11 +72,11 @@ function playRound(humanChoice, computerChoice){
         humanChoice == "scissors" && computerChoice == "paper"
     ) {
         //log winning message
-        console.log(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
+        logRound(`You win! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
     //if no draw or win was detected
     else {
-        console.log(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
+        logRound(`You lose! You played ${humanChoice} and the computer played ${computerChoice}`);
     }
 }
 
